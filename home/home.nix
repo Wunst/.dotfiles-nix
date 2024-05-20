@@ -1,0 +1,76 @@
+{ config, pkgs, ... }:
+
+let
+  shellAliases = {
+    ll = "ls -l";
+    ".." = "cd ..";
+  };
+  theme = "Solarized Dark";
+
+  lib = pkgs.lib;
+in {
+  imports = [
+    ./desktop/i3/i3.nix
+    ./desktop/common/wallpaper/wallpaper.nix
+  ];
+
+  # Home Manager needs a bit of information about you and the paths it should
+  # manage.
+  home.username = "ben";
+  home.homeDirectory = "/home/ben";
+
+  # This value determines the Home Manager release that your configuration is
+  # compatible with. This helps avoid breakage when a new Home Manager release
+  # introduces backwards incompatible changes.
+  #
+  # You should not change this value, even if you update Home Manager. If you do
+  # want to update the value, then make sure to first check the Home Manager
+  # release notes.
+  home.stateVersion = "23.11"; # Please read the comment before changing.
+
+  home.sessionVariables = {
+    EDITOR = "vim";
+  };
+
+  programs.home-manager.enable = true;
+
+  programs =  {
+    gh.enable = true;
+
+    bash = {
+      enable = true;
+      inherit shellAliases;
+    };
+
+    zsh = {
+      enable = true;
+      oh-my-zsh = {
+        enable = true;
+        theme = "muse";
+        plugins = [
+          "git"
+          "sudo"
+          "tmux"
+        ];
+      };
+      inherit shellAliases;
+    };
+
+    vim = {
+      enable = true;
+      settings = {
+        number = true;
+        relativenumber = true;
+        tabstop = 4;
+        shiftwidth = 4;
+        copyindent = true;
+        expandtab = true;
+      };
+    };
+
+    kitty = {
+      enable = true;
+      inherit theme;
+    };
+  };
+}
