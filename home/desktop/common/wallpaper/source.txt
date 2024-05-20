@@ -1,2 +1,2 @@
-Source: Gaspar Vardanyan's collection of Solarized wallpapers
+Image Source: Gaspar Vardanyan's collection of Solarized wallpapers
 https://gitlab.com/GasparVardanyan/solarized/-/tree/master/wallpapers-solarized
