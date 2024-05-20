@@ -72,5 +72,13 @@ in {
       enable = true;
       inherit theme;
     };
+
+    tmux = {
+      enable = true;
+      keyMode = "vi";
+      shortcut = "a";
+      mouse = true;
+      reverseSplit = true;
+    };
   };
 }
