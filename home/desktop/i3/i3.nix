@@ -38,7 +38,15 @@
         ];
         
         bars = [];
-        window.titlebar = false;
+
+        window = {
+          titlebar = false;
+          border = 5;
+        };
+
+        gaps = {
+          inner = 10;
+        };
 
         # Default applications
         terminal = "kitty";
