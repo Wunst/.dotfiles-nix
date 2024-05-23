@@ -1,4 +1,4 @@
-{ config, pkgs, hostname, ... }:
+{ config, pkgs, hostname, username, fullName, ... }:
 
 {
   imports = [
@@ -58,9 +58,9 @@
   console.keyMap = "de";
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.ben = {
+  users.users.${username} = {
     isNormalUser = true;
-    description = "Ben";
+    description = fullName;
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [];
     shell = pkgs.zsh;
