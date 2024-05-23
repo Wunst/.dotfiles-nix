@@ -13,8 +13,11 @@
       pkgs = nixpkgs.legacyPackages.${system};
     in {
       nixosConfigurations = {
-        nixos-testing = lib.nixosSystem {
+        vm = lib.nixosSystem {
           inherit system;
+          specialArgs = {
+            hostname = "vm";
+          };
           modules = [
             ./system/configuration.nix 
           ];
