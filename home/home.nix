@@ -10,8 +10,9 @@ let
   lib = pkgs.lib;
 in {
   imports = [
-    ./desktop/i3/i3.nix
-    ./desktop/common/wallpaper/wallpaper.nix
+    ./editor/vim
+    ./desktop/i3
+    ./desktop/common/wallpaper
   ];
 
   # Home Manager needs a bit of information about you and the paths it should
@@ -56,18 +57,6 @@ in {
       inherit shellAliases;
     };
 
-    vim = {
-      enable = true;
-      settings = {
-        number = true;
-        relativenumber = true;
-        tabstop = 4;
-        shiftwidth = 4;
-        copyindent = true;
-        expandtab = true;
-      };
-    };
-
     kitty = {
       enable = true;
       inherit theme;
@@ -81,4 +70,6 @@ in {
       reverseSplit = true;
     };
   };
+
+  editor.vim.enable = true;
 }
