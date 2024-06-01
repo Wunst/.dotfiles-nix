@@ -11,6 +11,7 @@ let
 in {
   imports = [
     ./editor/vim
+    ./editor/nixvim
     ./desktop/i3
     ./desktop/common/wallpaper
   ];
@@ -30,7 +31,7 @@ in {
   home.stateVersion = "23.11"; # Please read the comment before changing.
 
   home.sessionVariables = {
-    EDITOR = "vim";
+    EDITOR = "nvim";
   };
 
   programs.home-manager.enable = true;
@@ -72,4 +73,5 @@ in {
   };
 
   editor.vim.enable = true;
+  editor.nixvim.enable = true;
 }

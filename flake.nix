@@ -11,7 +11,7 @@
     nixvim.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { nixpkgs, home-manager, ... }:
+  outputs = { nixpkgs, home-manager, ... }@inputs:
     let
       lib = nixpkgs.lib;
       system = "x86_64-linux";
@@ -42,6 +42,7 @@
             inherit username;
           };
           modules = [
+            inputs.nixvim.homeManagerModules.nixvim
             ./home/home.nix 
           ];
         };

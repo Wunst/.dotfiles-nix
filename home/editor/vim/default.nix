@@ -1,27 +1,21 @@
 { config, pkgs, ... }:
 
+let
+  lib = pkgs.lib;
+  cfg = config.editor.vim;
 {
-  options = 
-  let 
-    lib = pkgs.lib; 
-  in {
-    editor.vim = {
-      enable = lib.mkEnableOption "vim";
-    };
-  };
+  options.editor.vim.enable = lib.mkEnableOption "vim";
 
-  config = {
-    programs.vim = {
-      enable = config.editor.vim.enable;
+  config.programs.vim = lib.mkIf cfg.enable {
+    enable = true;
 
-      settings = {
-        number = true;
-        relativenumber = true;
-        tabstop = 4;
-        shiftwidth = 4;
-        copyindent = true;
-        expandtab = true;
-      };
+    settings = {
+      number = true;
+      relativenumber = true;
+      tabstop = 4;
+      shiftwidth = 4;
+      copyindent = true;
+      expandtab = true;
     };
   };
 }
