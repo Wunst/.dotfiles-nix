@@ -9,6 +9,12 @@ let
 
   lib = pkgs.lib;
 in {
+  home.packages = with pkgs; [
+    nodePackages.nodejs
+    nodePackages.typescript
+    nodePackages.typescript-language-server
+  ];
+
   imports = [
     ./editor/vim
     ./editor/nixvim
@@ -68,7 +74,8 @@ in {
       keyMode = "vi";
       shortcut = "a";
       mouse = true;
-      reverseSplit = true;
+      sensibleOnTop = true;
+      terminal = "screen-256color";
     };
   };
 
