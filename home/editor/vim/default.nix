@@ -3,7 +3,7 @@
 let
   lib = pkgs.lib;
   cfg = config.editor.vim;
-{
+in {
   options.editor.vim.enable = lib.mkEnableOption "vim";
 
   config.programs.vim = lib.mkIf cfg.enable {
