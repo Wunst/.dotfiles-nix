@@ -17,7 +17,6 @@ in {
 
   imports = [
     ./editor/vim
-    ./editor/nixvim
     ./desktop/i3
     ./desktop/common/wallpaper
   ];
@@ -67,6 +66,11 @@ in {
     kitty = {
       enable = true;
       inherit theme;
+      font = {
+        name = "Terminess Nerd Font";
+        package = pkgs.terminus-nerdfont;
+        size = 12;
+      };
     };
 
     tmux = {
@@ -80,5 +84,8 @@ in {
   };
 
   editor.vim.enable = true;
-  editor.nixvim.enable = true;
+  wunst.editor.nixvim = {
+    enable = true;
+    colorscheme = "solarized-dark";
+  };
 }

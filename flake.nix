@@ -43,6 +43,7 @@
           };
           modules = [
             inputs.nixvim.homeManagerModules.nixvim
+            ./modules/hm/editor/nixvim
             ./home/home.nix 
           ];
         };
