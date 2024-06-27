@@ -12,6 +12,12 @@ in {
     };
   };
 
+  # utils for telescope
+  config.home.packages = lib.mkIf cfg.enable (with pkgs; [
+    ripgrep
+    fd
+  ]);
+
   config.programs.nixvim = lib.mkIf cfg.enable {
     enable = true;
 
