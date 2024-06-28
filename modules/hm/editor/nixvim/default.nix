@@ -88,6 +88,7 @@ in {
       expandtab = true;
       smartindent = true;
       clipboard = "unnamedplus";
+      undofile = true;
     };
 
     globals.mapleader = " ";
