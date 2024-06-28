@@ -6,6 +6,12 @@ in {
   options.wunst.editor.nixvim = {
     enable = lib.mkEnableOption "nixvim";
 
+    defaultEditor = lib.mkOption {
+      type = lib.types.bool;
+      default = false;
+      description = "Whether to use nixvim as default editor";
+    };
+
     colorscheme = lib.mkOption {
       type = lib.types.str;
       description = "The base16 colorscheme to use";
@@ -20,6 +26,8 @@ in {
 
   config.programs.nixvim = lib.mkIf cfg.enable {
     enable = true;
+
+    defaultEditor = cfg.defaultEditor;
 
     plugins.telescope = {
       enable = true;
@@ -92,6 +100,10 @@ in {
     };
 
     globals.mapleader = " ";
+  };
+
+  config.home.shellAliases = lib.mkIf (cfg.enable && cfg.defaultEditor) {
+    v = "nvim";
   };
 }
 

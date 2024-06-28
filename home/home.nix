@@ -36,7 +36,6 @@ in {
   home.stateVersion = "23.11"; # Please read the comment before changing.
 
   home.sessionVariables = {
-    EDITOR = "nvim";
   };
 
   programs.home-manager.enable = true;
@@ -86,6 +85,7 @@ in {
   editor.vim.enable = true;
   wunst.editor.nixvim = {
     enable = true;
+    defaultEditor = true;
     colorscheme = "solarized-dark";
   };
 }
